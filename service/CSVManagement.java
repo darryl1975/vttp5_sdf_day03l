@@ -1,7 +1,9 @@
 package service;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +36,22 @@ public class CSVManagement {
         return persons;
     }
 
-    public void writeCSV(String filename) {
+    public void writeCSV(String fullDirPathFilename, List<Person> persons) throws IOException {
+        // Use BufferedWriter
 
+        FileWriter fw = new FileWriter(fullDirPathFilename, false);
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        for(Person p: persons) {
+            bw.append(p.getName());
+            bw.append(",");
+            bw.append(p.getRegion());
+            bw.append(",");
+            bw.append(String.valueOf(p.getYearOfBirth()));
+            bw.newLine();
+        }
+        bw.flush();
+        bw.close();
+        fw.close();
     }
 }

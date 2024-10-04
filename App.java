@@ -166,7 +166,10 @@ public class App {
                     persons.add(p);
                     break;
                 case 2:
+                    Console con2 = System.console();
+                    String newFileName = con2.readLine("Enter a csv file to save (filename only): ");
 
+                    
                     break;
                 default:
                     break;
