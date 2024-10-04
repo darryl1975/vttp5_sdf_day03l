@@ -27,7 +27,7 @@ public class CSVManagement {
             String[] lineData = line.split(",");
 
             // put the extracted line data into a Person object
-            Person p = new Person(lineData[0], lineData[1], Integer.parseInt(lineData[2]));
+            Person p = new Person(lineData[0], lineData[1], Integer.parseInt(lineData[2].trim()));
             persons.add(p);
         }
         br.close();
