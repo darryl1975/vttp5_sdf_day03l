@@ -7,9 +7,12 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
+import people.Person;
 import service.CSVManagement;
 
 public class App {
@@ -134,7 +137,42 @@ public class App {
         //  gis.close();
         //  fis.close();
 
+        List<Person> persons = new ArrayList<>();
+        
         CSVManagement csv = new CSVManagement();
-        csv.readCSV(dirPathFileName);
+        persons = csv.readCSV(dirPathFileName);
+
+        // menu
+        // 1. Enter new Person details
+        // 2. Save to file (Prompt for new csv file name)
+        // 3. Quit and terminate program
+
+        Console consoleSelection = System.console();
+        Integer selection = 0; 
+        while (selection != 3) {
+            System.out.println("1. Enter new Person details");
+            System.out.println("2. Save to new csv file");
+            System.out.println("3. Quit program");
+            selection = Integer.parseInt(consoleSelection.readLine(">>> "));
+
+            switch (selection) {
+                case 1:
+                    Console con1 = System.console();
+                    String personName = con1.readLine("Enter Person name: ");
+                    String personRegion = con1.readLine("Enter Region/Area: ");
+                    String personYOB = con1.readLine("Enter Year of Birth: ");
+
+                    Person p = new Person(personName, personRegion, Integer.parseInt(personYOB));
+                    persons.add(p);
+                    break;
+                case 2:
+
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
     }
 }
