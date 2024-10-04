@@ -169,7 +169,7 @@ public class App {
                     Console con2 = System.console();
                     String newFileName = con2.readLine("Enter a csv file to save (filename only): ");
 
-                    
+                    csv.writeCSV(dirPath + File.separator + newFileName, persons);
                     break;
                 default:
                     break;
